@@ -1,0 +1,32 @@
+Mind Garden release cleanup (v4.0.48)
+
+Removed from the deployed app:
+- Retired daily-quotes.js and its unused generated translations.
+- Unloaded v27.css, superseded by the active style layers.
+- Retired sailboat/seaScene rules, animations and sea-banner.svg.
+- Duplicate Music translation key (the retained translation is unchanged).
+
+Moved public/wildlife.js to src/wildlife-art.js: this is a build-time SVG
+artwork generator, not a runtime module. The GIF renderer still uses it.
+Removed the obsolete V3.8 standalone-preview builder; the current isolated
+review builder remains scripts/build-menu-review.py.
+
+Build safeguards:
+- scripts/release-sources.json is the explicit list of active UI modules.
+- The translation generator only scans active application modules.
+- esbuild compacts release JS/CSS while preserving public/global names and
+  property names. It does not bundle/reorder the script execution sequence.
+- Only the current versioned JS/CSS pair is kept; offline cache entries are
+  regenerated from the deployed assets.
+- Legal comments, third-party notices and editable active sources remain.
+
+Preserved intentionally:
+- Database migrations, saved-data compatibility and profile IDs/history.
+- Active legacy-named styles: filenames alone do not establish dead code.
+- Account/multiplayer endpoints, current game prototypes and media fallbacks.
+- Historical release notes and checksums outside public/ (not downloaded by
+  the app). Git also retains removed source history.
+
+This cleanup does not implement the separate account-security, failed-save,
+navbar or Progress-visibility revisions from the broader approved audit.
+Deploy target remains Cloudflare Pages, public/. Workers is untouched.

@@ -1,0 +1,51 @@
+MIND GARDEN v3.8.8
+Approved update package — 7 November 2026
+
+ABOUT AND DOCUMENTATION
+- Updated English/Chinese user guidance for current navigation, text controls,
+  daily practice, bouquet rotation, media, backup/restore and online play.
+- Added copyright attribution to developer Pebblebrooks.
+- Expanded Privacy, PDPA & my data with factual local/online storage, third-party
+  services, privacy-request guidance and retention limits. This is an information
+  notice, not a certification of legal compliance.
+- Added help for storage warnings and unavailable/expired rooms.
+
+AUDIT FIXES
+- Prevented completed or failed uploads from reopening closed Settings or
+  changing another player's preferences after a profile switch.
+- Preserved the appearance selection when a video upload finishes; handled
+  aborted photo/video storage transactions.
+- Prevented delayed room responses and game updates from reopening closed
+  screens or replacing another dialog. Successful room membership stays resumable.
+- Stopped endless retries for expired/unavailable rooms, with Back to lobby.
+- Prevented stale invitations after Go offline and safe-handled clipboard/share
+  completion after leaving the room screen.
+- Fixed player switching during renaming so another player's screen is not renamed.
+- Rejected malformed JSON, invalid request shapes and invalid round numbers
+  without changing multiplayer rooms.
+- Added visible save-failure warnings and temporary in-memory online state with
+  retry of pending writes when storage becomes available.
+- Preserved original unreadable saves as recovery data instead of silently
+  replacing them or failing startup. Recovery export retains the original bytes.
+
+RETAINED FROM v3.8.7
+- Navigation overflow automatically moves into an icon-only hamburger menu.
+- Bouquet artwork stays proportional at enlarged text sizes.
+
+VALIDATION
+- 26 automated suites passed, including four fault/lifecycle suites.
+- All 36 JavaScript syntax checks passed.
+- Tests covered eight independent multiplayer clients; room ownership, capacity,
+  closure, history and rankings; gameplay/difficulty; daily practice; backups;
+  preferences; responsive navigation; bouquet; caching; and animation.
+- Browser checks at 390 px and 768 px widths with 200% text passed for navigation
+  and bouquet proportions. Mobile About had no measured horizontal overflow.
+- Simulated storage warnings/recovery worked; the browser recovery download
+  matched the original test bytes.
+- Release files match the approved draft checkpoint; ZIP integrity, file hashes,
+  production references and required existing assets were checked during packaging.
+
+LIMITS
+Live Cloudflare/D1 configuration and physical iOS/Android devices were not verified.
+The audit does not guarantee the absence of every possible defect. No new database
+migration is included; any incomplete earlier setup still needs to be completed.

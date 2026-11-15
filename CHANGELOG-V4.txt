@@ -1,0 +1,146 @@
+v4.0.41 — 14 November 2026
+- Clear account/save outcomes and consistent session-based navbar labels.
+- Named device players retained after sign-out with explicit status and switching.
+- Regression coverage for delayed session responses, pending password managers, reload and orientation changes.
+
+v4.0.40 — 14 November 2026
+Approved separate account/player menus; compact centred controls and game selectors;
+personal display/difficulty restoration; retained device copies; scene footer;
+explicit password/recovery downloads; responsive rankings; concise review messages;
+optional WebAuthn device sign-in with additive migrate-passkeys.sql. See README-UPDATE.txt.
+
+Mind Garden V4.0.6 — 8 November 2026
+Developer: Pebblebrooks
+
+Approved pet update: recorded CC0 meow, purr, bark and growl; independent random visits; side-view crawl cycles; stopping, sitting, head turns, grooming and geometric exits. Vocal poses accompany species-appropriate sounds. Shared audio prevents overlapping voices. Direct touch/stroking remains; manual action buttons removed. Sound remains opt-in to respect browser playback requirements.
+
+No new database migration. Existing progress and Cloudflare bindings are preserved.
+Animation uses original frame-based artwork, not a fully rigged 3D model. Physical iOS/Android hardware has not been verified.
+Audio attribution: public/pets/audio-field/CREDITS.txt. Anime.js 4.2.2 MIT licence: public/vendor/anime-LICENSE.md.
+
+PREVIOUS RELEASES
+
+Mind Garden V4.0.5 — Release notes
+8 November 2026 · Developer: Pebblebrooks
+
+Fixes: stable search input/results-only refresh and one focus ring; mobile search; nonshrinking modal children and launch spacing; expanded room status/rankings; next-level controls; narration independent of spoken hints; varied story questions; consistent SVG navbar icons.
+
+New: six single-player activities — Connect the Dots (number/letter modes), Garden Pets (Mochi cat and Toby dog, pet/feed/brush/play/rest), Spot the Difference · Garden, Colour Links, Remember & Draw, Number & Word Recall (number/word/mixed modes). Three challenge levels for scored activities. Memory viewing times 5/10/20/30 seconds, Ready gate, untimed response, pause, replay and next level. Shape recognition alternative and approximate drawing comparison. All activity text supports English/Chinese. New scored games participate in the daily plan; pets do not.
+
+UI: centered popup headings/subheadings; balanced About close button; compact icon-only garden-background toggle; full-bloom flower picker comparison (read-only, no progress mutations); alternating cat/dog peeks above the progress panel, paused offscreen/background/in dialogs and respecting motion settings. Optional pet sound is synthesized, not a recording.
+
+Validation: garden-activities test covers 150 generated solvable link grids, drawing similarity, six bilingual launches, dot/difference completion, recall modes, recognition, pet care, bloom immutability and scenery toggle. Existing 30 games ×15 levels ×2 languages, five relaxed games, navbar overflow and Mochi controller checks passed. Browser verified About centering, mobile single-tap dots with no horizontal overflow, compact scenery icon, picture differences, and progress peeking geometry/animation.
+
+Limits: pets use frame-based artwork and simple animated care overlays, not continuous rigged 3D. Drawing comparison is approximate and not an assessment. New games are single player only. Physical iOS/Android narration and touch hardware, production multiplayer services and Cloudflare D1 have not been tested for this release.
+
+Assets: original puppy sprite generated with built-in image generation; public/pets/toby-sprites.webp. Prompt: square transparent 4x4 sprite sheet, same fluffy golden cream puppy, four idle/blink poses, four petting reactions, four blue-ball play poses and four sleeping poses; consistent scale/camera, no text or scenery. Original cat sprite retained at public/pets/mochi-sprites.webp.
+
+
+PREVIOUS RELEASES
+
+Mind Garden v4.0.4 — 8 November 2026
+Developer: Pebblebrooks
+
+Welcome page
+- Text-only editable welcome/name; no background, border or box shadow.
+- Three matching cards: Today's Games, All Games, Play Together.
+- Remove the separate daily-start button, daily sentence, progress card,
+  Leaderboard button and Quick guide button from the welcome actions.
+- Short explanations behind accessible information icons.
+- Larger tagline without a background: white in dark mode, dark teal in light.
+
+Navigation and dialogs
+- Group the hamburger menu into Play, Your garden, Preferences and Help.
+- Preferences starts collapsed. Progress and rankings remain accessible.
+- Compact sound and animation navbar icons, with descriptive accessible
+  labels and matching menu controls. Preserve automatic navbar overflow.
+- Center popup headings, labels and controls; separate fields and action
+  buttons consistently. Hide empty status bars.
+- Music volume labels/percentages sit above sliders to prevent collisions.
+- Information works by hover, keyboard or tap; Escape dismisses it.
+- Updated English/Chinese About and Quick guide for the new control locations.
+
+Release
+- V4.0.4 metadata, 404 bundles and a new service-worker cache namespace.
+- Complete application assets, editable source, tests and build script.
+- No new SQL beyond V4.0.3; existing results and preferences are retained.
+- Animal art and motion mockups remain studies; existing animals are retained.
+
+Mind Garden v4.0.3 — 7 November 2026
+Developer: Pebblebrooks
+
+Scrolling
+- Remove the competing body scroller and its scroll-chain block. The document owns normal page scrolling.
+- Lock background scrolling while a shared dialog is open. The dialog keeps its own scroll, including at its edges. Its padding and height fit the viewport.
+- These rules passed computed CSS checks at 100%, 140% and 200% text. Physical mouse-wheel behavior and device rendering need a real browser check.
+
+Multiplayer sessions
+- Choose 1–20 rounds before creating a room (default 3). The number is saved in D1 and shown to participants.
+- Every quiz now waits for that player's Begin before revealing questions or starting timing. Matching keeps its closed board, Begin, full 5/8-second preview, automatic closure and matching timer. Network waiting for Begin does not shorten the initial preview.
+- Bingo waits for every remaining player to press Begin; the server blocks calls and marks until then.
+- Each new round requires Begin again. Returning to a begun round preserves progress and timing. Existing rooms created by earlier versions retain their original session behavior until closed; create a new room to use a fixed limit.
+- The final planned round finishes the session automatically, saves final rankings and releases all memberships.
+- Finish session is available between rounds to finish early. Cancel game & close room stops unfinished play; End current round marks unfinished players as not finished. Completed scores remain saved.
+- Invitations remain visible to online players in other rooms. Room options explains the exit rule and directs the player to the current room controls without silently dropping participation. Background/suspended tabs are not guaranteed immediate notices.
+- Back to garden keeps membership; Go offline is separate and requires leaving/finishing the active room.
+
+Database and deployment
+- Add repeatable migrate-v4.0.3.sql: mg_room_sessions and mg_round_starts. No existing table or result is deleted.
+- Include comment-free check-database-v4.0.3.sql; 21 PRESENT rows confirm object names, not complete schema definitions.
+- Updated English/Chinese About help and error messages, versioned 403 assets, and service-worker manifest.
+- Update both public/ and functions/api/room8.js; include shared/online-activities.js at its correct path. The package is affected files plus cumulative deployment repair, not a standalone app.
+
+Mind Garden v4.0.2 — 7 November 2026
+Developer: Pebblebrooks
+
+Multiplayer Matching Pairs
+- Cards start face down. Begin reveals every card for 5 seconds (6 pairs) or 8 seconds (10 pairs), then closes them automatically.
+- Matching time starts at the preview deadline. Returning to a round does not restart or extend that preview. Existing V4.0.1 games in progress remain resumable.
+- Card faces keep their layout space. A visible emoji stands in for an illustration while it loads or if loading fails. Loaded SVG artwork is displayed after decoding; no additional tap is needed for that transition.
+- Match feedback reserves space for the longest localized message at the current width and text size. Ready, countdown and matching controls also retain their space.
+- The countdown updates its label without rewriting every card on each tick. Single-tap play and immediate continuation after a mismatch remain available.
+
+Leaving and changing rooms
+- Leave this room clears active local room state and returns to the lobby with a room-code input. The other players can continue.
+- Old status and lobby responses cannot restore a room after leaving. A pending response from the old room does not block the new room's status request.
+- Hosts close their room before joining another. Completed results stay in the existing database.
+
+Documentation and deployment
+- About includes the new English/Chinese matching and room-exit instructions; release metadata is v4.0.2.
+- The update includes the earlier V4.0.1 GitHub folder repair, including missing/outdated source inputs. It contains affected files only, not a standalone app.
+- No Functions or SQL changes. Replacement animal animations are not part of this release.
+- Browser/device visual validation remains outstanding: the browser preview was blocked by the environment's URL security policy. Automated DOM, CSS-state, API and cache checks passed; these do not certify Safari/Android rendering or measured layout stability.
+
+MIND GARDEN v4.0.1 — 7 November 2026
+
+- Online Matching Pairs now opens with every picture revealed in both 6-pair and 10-pair modes. Begin matching hides the cards and starts that player's timer. The host can still end or cancel the round.
+- Card flips update an existing board instead of rebuilding the complete dialog. Touch targets, loaded illustrations, focus and scroll position stay stable.
+- A new card tap dismisses an unmatched pair and opens the selected card immediately. The optional 950 ms auto-close no longer disables all card input.
+- Round checkpoint writes are deferred briefly after flips, with immediate flushing when exiting or hiding the page. Rejoining preserves the preview/play stage and progress.
+- Personal music playback is requested during the Play gesture, before asynchronous loading. Loading feedback, cancellation and rejected-play recovery are tested.
+- Nature audio and bouquet redraws pause behind dialogs and multiplayer overlays. Removed backdrop blur from opaque game controls and touch hover movement.
+- Light-mode primary actions and selected category filters now use pale green (#cfe2ce) with dark teal (#173e37) text. The selected category includes a checkmark. Dark and high-contrast modes retain their own treatments.
+- Welcome sections share one spacing rule: 24 px at 100%, 33.6 px at 140%, capped at 34 px for larger text. Wrapped cards use the same gap. Game library card gaps also scale with text size.
+- About version and bilingual online matching instructions updated. Versioned UI bundles and service-worker cache updated together.
+
+No new API, SQL migration or animal replacement assets. The requested more realistic animal animations remain a proposed separate animation pass. Existing motion controls and collision handling are retained.
+
+MIND GARDEN v4.0.0 — 7 November 2026
+
+Implemented the approved visual redesign and the v3.8.9 game-picture fixes.
+
+- Consistent light appearance: warm ivory page/cards, pale sage navigation and secondary controls, deep teal primary actions and text. Explicit light and automatic system-light modes both use the new palette. Dark and high-contrast options remain available.
+- Start Today's Games is first in visual and keyboard order. Three secondary cards provide All Games, Play Together and My Progress. Leaderboard remains a quieter secondary button and a navigation/menu destination.
+- Quiet game view removes the decorative game background. Garden view remains available. Switching the view does not restart a question. The preference is stored separately for each local player and exported/imported with other preferences.
+- Previous/next scenery controls share a dedicated row with the scene caption. Welcome video playback controls use the same area.
+- Consistent secondary/primary button styling, restrained shadows, rounded corners, clear focus and selected states, and 44–48px minimum targets for the redesigned utility controls.
+- Dismissible first-use hint and bilingual Quick guide, available from the welcome page and hamburger menu.
+- Bundled Twemoji illustrations for game pictures and library badges: 214 source illustrations plus six simple geometric symbols. No runtime artwork CDN request. Attribution and licence supplied. Personal photo cards keep their original photos.
+- Picture answers are distinguished from text/numbers; enlarged neutral picture planes, stronger borders, non-colour selection cues and flexible grids improve visibility.
+- Matching cards no longer shrink with viewport height. Picture clues, online pictures, bingo, dominoes, paths and clock faces retain the earlier visibility fixes.
+- Single-row navigation overflow and bounded bouquet proportions preserved. Welcome name wrapping improved at narrow widths and large text sizes.
+- About shows v4.0.0, describes the new controls and includes artwork credits. Existing Pebblebrooks copyright, first-time setup, FAQ and privacy/PDPA information retained.
+
+No new games, API changes or SQL migration in this design release. Existing games, difficulty progression, daily practice selection, multiplayer modes, saved rankings and Contact form remain in place.
+
+User research is a separate remaining task. This release has not been tested with recruited older adults. See USABILITY-CHECKLIST.txt.
