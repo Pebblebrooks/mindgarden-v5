@@ -1,0 +1,176 @@
+/* Centered, comfortably wrapped instructions and borderless review cards. */
+#mini #mp,#mini #mmsg,#game #msg{ text-align:center; }
+#mini #mp :is(h1,h2,h3,h4,p,legend,figcaption),#mini #mp .ga-recall-review{ text-align:center; }
+#mini #mp p,#mini #mmsg,#game #msg,#box p{max-width:44ch;margin-inline:auto;line-height:1.6;text-wrap:pretty;overflow-wrap:anywhere;}
+.game-copy-line{display:block;}
+.game-copy-line+.game-copy-line{margin-top:.4em;}
+#mini #mp .round-review,#mini #cgFeedback{max-width:960px;padding:clamp(16px,3vw,28px);margin:24px auto;border:0;border-radius:24px;background:var(--panel);box-shadow:0 8px 24px #173e3712;box-sizing:border-box;}
+.answer-comparison{margin:1.2em auto;width:100%;max-width:900px;text-align:center;}
+.answer-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,calc(13rem * var(--fs))),1fr));gap:18px;list-style:none;padding:0;margin:0;}
+.answer-card{display:flex;flex-direction:column;align-items:stretch;gap:16px;min-width:0;padding:20px 16px;border:0;border-radius:22px;background:color-mix(in srgb,var(--panel) 88%,var(--ink) 12%);box-shadow:0 5px 14px #173e3710;}
+.answer-position{align-self:center;font-weight:700;font-size:.85em;padding:.3em .8em;border-radius:999px;background:var(--panel);}
+.answer-value{display:grid;gap:7px;min-width:0;line-height:1.45;overflow-wrap:anywhere;}
+.answer-label{font-size:.82em;font-weight:600;opacity:.85;}
+.answer-value strong{font-size:1.12em;font-weight:750;}
+.answer-player{padding:14px 10px;border-radius:16px;background:var(--panel);}
+.answer-outcome{display:block;font-size:.86em;font-weight:700;margin-top:auto;line-height:1.5;}
+.answer-match .answer-player,.answer-match .answer-outcome{color:#185738;}
+.answer-different .answer-player strong{color:#b42318;font-weight:800;}
+.answer-match{background:#e6f2e7;}.answer-pending{background:#edf0ed;color:#3b5046;}
+[data-v4-mode="dark"] .answer-card{background:#25453d;color:#f3f7ee;}
+
+[data-v4-mode="dark"] .answer-pending{background:#34453f;}
+[data-v4-mode="dark"] .answer-match :is(.answer-player,.answer-outcome){color:#c5f0c9;}
+[data-v4-mode="dark"] .answer-different .answer-player strong{color:#ff8c8c;font-weight:800;}
+#box .pair-rating-explanation{border:0;padding:0;margin:.4em auto;max-width:100%;}
+.pair-award-label{font-weight:700;}
+.pair-result-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,calc(8rem * var(--fs))),1fr));gap:14px;margin:1em auto;max-width:32em;}
+.pair-result-stats>div{padding:14px 10px;border-radius:18px;background:color-mix(in srgb,var(--panel) 88%,var(--ink) 12%);min-width:0;}
+.pair-result-stats dt{font-size:.85em;line-height:1.4;}.pair-result-stats dd{margin:.35em 0 0;font-size:1.25em;font-weight:750;}
+.pair-result-stars{display:flex;justify-content:center;flex-wrap:wrap;gap:.12em;letter-spacing:0;line-height:1.15;}
+@media(max-width:480px){.answer-cards{grid-template-columns:1fr;}.answer-card{padding:18px 14px;}#mini #mp .round-review{margin-inline:0;}}
+@media(forced-colors:active){.answer-card,.pair-result-stats>div{outline:1px solid CanvasText;}.answer-outcome{color:CanvasText!important;}}
+/* A consistent selected state across music, settings and menu choices. */
+:root{--selection-bg:#f3bd72;--selection-ink:#432600;--selection-edge:#97540b;}
+:root[data-v4-mode="dark"]{--selection-bg:#f0b15d;--selection-ink:#271a08;--selection-edge:#ffda9b;}
+html[data-v4-mode]:not([data-hc="1"]) #ov #box button[aria-pressed="true"],
+html[data-v4-mode]:not([data-hc="1"]) #home #unifiedNav #navMenu button[aria-pressed="true"],
+html[data-v4-mode]:not([data-hc="1"]) #home .category-pill[aria-pressed="true"],
+html[data-v4-mode]:not([data-hc="1"]) [role="tab"][aria-selected="true"]{background:var(--selection-bg)!important;background-image:none!important;color:var(--selection-ink)!important;border-color:var(--selection-edge)!important;outline:2px solid var(--selection-edge);outline-offset:1px;box-shadow:inset 0 1px 0 #ffffff55,0 3px 0 #6d471a33!important;}
+#box button[aria-pressed="true"]::before,#navMenu button[aria-pressed="true"]::before,.category-pill[aria-pressed="true"]::before{content:'✓';font-weight:800;flex:none;margin-inline-end:.3em;}
+html[data-v4-mode]:not([data-hc="1"]) #ov #box button[aria-pressed="true"]:focus-visible,html[data-v4-mode]:not([data-hc="1"]) #home #unifiedNav #navMenu button[aria-pressed="true"]:focus-visible{outline:3px solid var(--ink);outline-offset:4px;}
+.matching-mode{padding:18px;border-radius:20px;}.matching-mode legend{font-weight:750;}.matching-mode .row{margin:12px auto;}.matching-mode p{font-size:.9em;}
+#game .bar[hidden]{display:none!important;}
+
+/* One answer at a time keeps long sequences from growing beyond the viewport. */
+#mini #mp .round-review,#mini #cgFeedback{padding:12px;margin:8px auto;max-width:640px;border-radius:18px;}
+#mini #mp .round-review h3,#mini #cgFeedback h3{margin:0 0 8px;font-size:1.15em;}
+#mini #mp .round-review p{margin:6px auto;line-height:1.35;}
+#mini #mp .round-review .row{margin:8px 0 0;}
+.answer-comparison{margin:8px auto;max-width:580px;}
+.answer-cards{display:block;}
+.answer-card{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;padding:12px;border-radius:16px;}
+.answer-card[hidden]{display:none!important;}
+.answer-position,.answer-outcome{grid-column:1/-1;justify-self:center;padding:0;background:none;}
+.answer-value{gap:4px;align-content:center;line-height:1.3;}
+.answer-value strong{font-size:1em;}
+.answer-player{padding:8px;border-radius:12px;}
+.answer-outcome{margin:0;line-height:1.25;}
+.answer-pager{display:flex;align-items:center;justify-content:center;gap:16px;margin:8px 0 0;}
+.answer-pager .btn{min-width:44px;min-height:44px;padding:4px 12px;}
+@media(max-height:500px){#mini #mp .round-review,#mini #cgFeedback{margin:0 auto;padding:8px;} .answer-card{padding:8px;gap:4px;} .answer-comparison{margin:4px auto;} }
+
+.cg-game>[hidden]{display:none!important;}
+/* Keep file buttons and long names on separate lines, including native iOS pickers. */
+#box .file-picker{display:flex;flex-direction:column;align-items:stretch;gap:10px;position:relative;width:100%;min-width:0;margin-block:10px;}
+#box .file-picker .file-picker-input{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:0!important;border:0!important;overflow:hidden!important;clip-path:inset(50%);white-space:nowrap;}
+#box .file-picker-button{width:100%;min-width:0;white-space:normal;text-align:center;line-height:1.35;}
+#box .file-picker-name{display:block;max-width:100%;overflow-wrap:anywhere;white-space:normal;font-size:.85em;line-height:1.4;font-weight:400;text-align:center;}
+/* Audio, pause and scenery share a compact toolbar; never cover the game board. */
+#mFab{display:none!important;}
+#game .hud>.v4-game-tools,#mini .hud>.v4-game-tools{display:flex;flex:0 0 auto;flex-wrap:nowrap;align-items:center;justify-content:flex-end;gap:6px;margin:0 0 0 auto!important;}
+#game .hud>.v4-game-tools .btn,#mini .hud>.v4-game-tools .btn,#box .game-audio-toggle{display:inline-flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;min-width:44px;height:44px;min-height:44px;padding:8px!important;margin:0!important;font-size:20px;line-height:1;}
+.v4-game-tools .game-audio-toggle svg{width:24px;height:24px;}
+#game .v4-game-tools .btn::before,#mini .v4-game-tools .btn::before,#box .game-audio-toggle::before{content:none!important;}
+#game>.v4-game-tools,#mini>.v4-game-tools{display:none;}
+.bouquet-selection{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;font-weight:650;}
+.bouquet-selection-icon svg{width:36px;height:36px;display:block;}
+.story-detail-feedback{text-align:center;margin:10px auto;}
+
+/* Repeating floral borders stay behind opaque cards and readable content. */
+#libraryDisplay::before,#libraryDisplay::after{top:40px;bottom:0;height:auto;width:clamp(120px,17vw,230px);opacity:.25;background:#a9cfb0;mask:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20180%20360%22%3E%3Cg%20fill%3D%22black%22%3E%3Cpath%20d%3D%22M84%20340Q135%20210%2080%2050%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%223%22%2F%3E%3Cpath%20d%3D%22M103%20275Q20%20276%2028%20220Q88%20219%20103%20275M110%20225Q168%20220%20161%20170Q113%20171%20110%20225M104%20167Q33%20159%2040%20109Q98%20119%20104%20167M91%20105Q145%2091%20139%2051Q93%2056%2091%20105%22%2F%3E%3Cg%20transform%3D%22translate%2865%2046%29%22%3E%3Cellipse%20cy%3D%22-16%22%20rx%3D%229%22%20ry%3D%2217%22%2F%3E%3Cellipse%20cy%3D%22-16%22%20rx%3D%229%22%20ry%3D%2217%22%20transform%3D%22rotate%2872%29%22%2F%3E%3Cellipse%20cy%3D%22-16%22%20rx%3D%229%22%20ry%3D%2217%22%20transform%3D%22rotate%28144%29%22%2F%3E%3Cellipse%20cy%3D%22-16%22%20rx%3D%229%22%20ry%3D%2217%22%20transform%3D%22rotate%28216%29%22%2F%3E%3Cellipse%20cy%3D%22-16%22%20rx%3D%229%22%20ry%3D%2217%22%20transform%3D%22rotate%28288%29%22%2F%3E%3Ccircle%20r%3D%229%22%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%22translate%28144%20310%29%20scale%28.7%29%22%3E%3Cellipse%20cy%3D%22-16%22%20rx%3D%229%22%20ry%3D%2217%22%2F%3E%3Cellipse%20cy%3D%22-16%22%20rx%3D%229%22%20ry%3D%2217%22%20transform%3D%22rotate%2872%29%22%2F%3E%3Cellipse%20cy%3D%22-16%22%20rx%3D%229%22%20ry%3D%2217%22%20transform%3D%22rotate%28144%29%22%2F%3E%3Cellipse%20cy%3D%22-16%22%20rx%3D%229%22%20ry%3D%2217%22%20transform%3D%22rotate%28216%29%22%2F%3E%3Cellipse%20cy%3D%22-16%22%20rx%3D%229%22%20ry%3D%2217%22%20transform%3D%22rotate%28288%29%22%2F%3E%3Ccircle%20r%3D%229%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E") center top/100% auto repeat-y;animation:none;transform:none}
+#libraryDisplay::before{left:-20px}
+#libraryDisplay::after{right:-20px;top:210px;transform:scaleX(-1)}
+html[data-v4-mode="light"]:not([data-hc="1"]) #libraryDisplay::before,html[data-v4-mode="light"]:not([data-hc="1"]) #libraryDisplay::after{background:#356e4e;opacity:.25}
+html[data-hc="1"] #libraryDisplay::before,html[data-hc="1"] #libraryDisplay::after{display:none}
+
+/* Keep decorative selected-flower samples independent of the main bouquet SVG. */
+#livingGarden .bouquet-selection .bouquet-selection-icon{display:block;flex:0 0 52px;width:52px;height:52px}
+#livingGarden .bouquet-selection .bouquet-selection-icon svg{width:52px!important;height:52px!important;max-height:52px!important;margin:0!important;aspect-ratio:1;filter:none}
+#mp .story-answer-grid{width:min(100%,760px);margin:16px auto;gap:12px;grid-template-columns:repeat(2,minmax(0,1fr))!important}
+#mp .story-answer-grid .big{aspect-ratio:auto!important;min-height:64px;max-height:none;height:auto;padding:14px 18px;font-size:calc(1.15rem * var(--fs))!important;line-height:1.35;overflow-wrap:normal;word-break:normal;border-width:2px;border-radius:16px}
+.story-voice-options{max-width:520px;margin:12px auto;font-size:calc(.9rem * var(--fs))}
+@media(max-width:420px){#mp .story-answer-grid .big{padding:12px 8px;font-size:calc(1rem * var(--fs))!important}.story-voice-options select{max-width:100%}}
+
+.game-language-toggle span{font-size:14px!important;white-space:nowrap;line-height:1;font-weight:800}
+
+#unifiedNav .nav-actions [data-go="language"]{display:inline-flex!important;flex:0 0 48px!important;width:48px!important;min-width:48px!important;max-width:48px!important;height:48px;padding:10px!important}
+
+.game-copy-lines{white-space:pre-line;line-height:1.65}
+
+/* Compact play spacing without clipping boards or reducing text-size preferences. */
+#mini,#game{box-sizing:border-box;max-width:100%;padding-inline:clamp(8px,2vw,24px)}
+#mini .hud,#game .hud{gap:6px;margin-bottom:8px;flex-wrap:wrap}
+#mini #mp{min-width:0;max-width:100%}
+#mini .gridm{gap:clamp(6px,1.2vmin,12px);grid-template-columns:repeat(var(--c),minmax(0,1fr));margin-bottom:10px}
+#mini .gridm>.big{min-width:0;min-height:44px;overflow-wrap:anywhere}
+#mini .big.one{width:min(180px,30vh,50%);margin-bottom:8px}
+@media(max-height:800px){
+ #mini .msg,#game .msg{margin-block:6px;min-height:0}
+ #mini #mp>.gridm>.big:not(.txt){aspect-ratio:auto;height:clamp(44px,12vh,110px)}
+ #mini .gridm .big img,#mini .gridm .big svg{max-height:100%;object-fit:contain}
+ #mini #mp p{margin-block:8px;line-height:1.4}
+}
+#mini .cg-game{padding:4px 4px 12px}
+#mini .cg-game h2{font-size:1.2em;margin:8px 0}
+#mini .cg-sequence{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:0;margin:10px 0}
+#mini .cg-sequence li{padding:6px;min-width:0;overflow-wrap:anywhere;font-size:.9em}
+#mini .cg-sequence .cg-art{margin:4px}
+#mini .cg-art img{width:54px;height:54px}
+#mini .cg-grid{gap:8px;margin:10px 0;grid-template-columns:repeat(3,minmax(0,1fr))}
+#mini .cg-tile{gap:4px;padding:8px;min-width:0}
+#mini .cg-game .ga-actions,#mini .cg-notes{margin:10px 0;gap:8px}
+#mini #cgFeedback:empty{display:none}
+#mini .ga-notice:empty{display:none}
+#mini .ga-pictures:not(.zoom){grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+#mini .ga-picture{min-width:0;margin:0}
+#mini .gridm .big.txt{min-height:48px;padding:6px}
+#mini .dp{gap:8px;grid-template-columns:repeat(2,minmax(0,1fr))}
+#mini .dp .gridm .big{min-height:44px;height:auto;aspect-ratio:1}
+#mini .gridm .big.st.sm{height:clamp(44px,8vh,76px);aspect-ratio:auto}
+#mini .bingo-grid{width:min(100%,360px);margin:8px auto}
+#mini .new-actions{margin:8px 0}
+#mini .ed-choices{gap:8px;margin:8px 0}
+#game #grid{grid-template-columns:repeat(var(--c),minmax(0,1fr))}
+#game #grid .card{min-height:44px}
+#mini #mp>div>svg[aria-label="Analogue clock"]{width:min(220px,28vh);height:auto}
+#mini .ed-choices{grid-template-columns:repeat(2,minmax(0,1fr))}
+#mini .ed-food-art{margin:6px auto}
+#mini .ed-food-art img{width:72px;height:72px}
+#mini .picture-grid,#mini .path-grid{max-width:min(100%,48vh)}
+#mini .ga-dotboard,#mini .ga-linkboard{width:min(100%,48vh);margin:10px auto}
+#mini .bingo-call{padding:8px;margin:8px 0;gap:6px}
+#mini .bingo-call>.bingo-picture{width:64px;flex-basis:64px}
+#mini .bingo-card{min-height:64px;padding:4px}
+#mini .bingo-picture .game-picture{font-size:clamp(32px,50cqi,60px)}
+#mini .domino-chain{padding:8px;margin:8px 0}
+#mini .domino-hand{margin:8px 0}
+#mini #mp .gridm:has(>.big:not(.txt)){grid-template-columns:repeat(var(--c),minmax(44px,1fr))!important}
+#mini #mp .big.one{width:min(180px,24vh,50%);margin:8px auto}
+#mini #mp .gridm>.big.st.sm{min-height:44px;height:clamp(44px,8vh,76px);aspect-ratio:auto}
+#mini #mp .dp .gridm>.big{min-height:44px;height:clamp(44px,8vh,72px);aspect-ratio:auto;padding:2px}
+#mini #mp .gridm>.big.txt{min-height:48px;height:auto;padding:6px}
+#mini #mp .seqline{font-size:clamp(1.4rem,5vw,2.2rem);margin:6px 0;overflow-wrap:anywhere}
+#mini #mp .gridm:has(>.txt.nm){grid-template-columns:repeat(var(--c),minmax(44px,1fr))!important}
+#mini #mp .gridm>.big.st.sm{height:44px;padding:2px}
+#mini #mp .gridm>.big.st.sm .game-picture{font-size:32px}
+#mini #cgAudioStatus:empty,#mini #cgEntry:empty{min-height:0;margin:0}
+#mini .domino-choice{padding:4px;min-height:56px}
+#mini .domino-hand{gap:6px}
+@media(max-width:480px){#mini #mp .dp{grid-template-columns:1fr}#mini #mp .dp .gridm>.big{height:48px}}
+
+#mini #mp .big.txt.nm{font-size:calc(1.5rem * var(--fs));line-height:1.3}
+#mini #mp .gridm>div.big.st.sm{height:40px;min-height:40px}
+
+/* Review status above the comparison; encouragement below, without repeating answers. */
+.answer-card{display:block;padding:0;background:none;box-shadow:none;border-radius:0;}
+.answer-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;padding:12px;border-radius:16px;background:color-mix(in srgb,var(--panel) 88%,var(--ink) 12%);}
+.answer-card .answer-position{display:block;margin-bottom:6px;}
+.answer-card .answer-outcome{margin:0 0 6px;}
+.answer-encouragement{grid-column:1/-1;text-align:center;font-size:.86em;font-weight:700;line-height:1.25;}
+.answer-match .answer-pair{background:#e6f2e7;}
+.answer-pending .answer-pair{background:#edf0ed;}
+[data-v4-mode="dark"] .answer-card{background:none;}
+[data-v4-mode="dark"] .answer-pair{background:#25453d;color:#f3f7ee;}
+[data-v4-mode="dark"] .answer-pending .answer-pair{background:#34453f;}
+@media(max-height:500px){.answer-pair{padding:8px;gap:4px;}}

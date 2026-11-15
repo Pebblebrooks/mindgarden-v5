@@ -1,0 +1,366 @@
+/* Approved menu references: one outlined surface, readable hierarchy, gold primary actions. */
+:root{--menu-surface:linear-gradient(135deg,#174e49,#10383a);--menu-card:linear-gradient(135deg,#296c63,#1a514f);--menu-ink:#fffbee;--menu-edge:#d4e8dc;--menu-gold:linear-gradient(120deg,#ffe170,#ffca27)}
+html[data-v4-mode="light"]{--menu-surface:linear-gradient(135deg,#f2faed,#deeee2);--menu-card:linear-gradient(135deg,#fffdf4,#e5f2e5);--menu-ink:#163e37;--menu-edge:#578575}
+html:not([data-hc="1"]) #ov #box:has(.account-panel,#pd,.personal-result){background:var(--menu-surface)!important;color:var(--menu-ink)!important;border:2px solid var(--menu-edge)!important;border-radius:24px;box-shadow:0 12px 36px #001d2333;padding:clamp(18px,3vw,32px);gap:16px;width:min(560px,calc(100vw - 24px))}
+#ov #box:has(.account-panel,#pd,.personal-result) .btn{border-radius:10px!important;border-width:2px!important;box-shadow:none!important;min-height:48px;line-height:1.25;white-space:normal}
+html:not([data-hc="1"]) #ov #box:has(.account-panel,#pd,.personal-result) .btn{background:transparent!important;color:var(--menu-ink)!important;border-color:var(--menu-edge)!important}
+html:not([data-hc="1"]) #ov #box:has(.account-panel,#pd,.personal-result) .btn.main{background:var(--menu-gold)!important;color:#14312d!important;border-color:#ffdb58!important}
+#ov #box .menu-brand{font-size:calc(1.2rem * var(--fs));font-weight:750;text-align:center;line-height:1.25;margin:0 0 18px}
+#ov #box .account-panel h2{font-size:calc(2rem * var(--fs));line-height:1.15;text-align:center;margin:0 0 12px}
+#ov #box .account-panel :is(p,label,h3){text-align:center;max-width:none}
+#ov #box .account-panel :is(input,textarea){text-align:center;text-align-last:center;background:transparent;color:inherit;border:2px solid var(--menu-edge);border-radius:10px;padding:12px;font-size:calc(1.1rem * var(--fs))}
+#ov #box .account-panel label{margin:18px 0 8px;font-size:calc(1.1rem * var(--fs))}
+#ov #box .account-secret{position:relative;display:flex;border:2px solid var(--menu-edge);border-radius:10px;align-items:center;padding:4px;gap:4px}
+#ov #box .account-secret input{border:0;min-width:0;width:100%;padding:8px;flex:1 1 0}
+#ov #box .account-secret .btn{min-width:60px;min-height:44px;padding:6px 10px;font-size:calc(.9rem * var(--fs));flex:0 0 auto}
+#ov #box .account-panel form>.main,#ov #box .account-recovery-slip>.btn{width:100%;margin:20px 0 0;min-height:52px}
+#ov #box .account-modes{display:flex;flex-direction:column;align-items:stretch;gap:10px;margin-top:12px}
+#ov #box .account-modes>.btn{width:100%;margin:0}
+#ov #box .account-modes>[data-account-mode="recover"],#ov #box .menu-text-action{border:0!important;background:none!important;text-decoration:underline;font-weight:400;box-shadow:none!important;padding:8px}
+#ov #box .account-panel #accountDone{display:block;min-width:140px;margin:22px auto 0}
+#ov #box .account-panel #accountStatus:empty{display:none}
+#ov #box .account-panel .account-extras{border:0;margin:12px 0 0;padding:0;font-size:.85em}
+#ov #box .account-panel .account-extras>summary{text-align:center;font-weight:400}
+#ov #box .account-panel[data-auth-view="success"] .account-success{border:0;font-size:1.2em;padding:12px 0}
+#ov #box .account-panel[data-auth-view="success"]>.row[hidden]{display:none!important}
+#ov #box:has(#pd)>h2{font-size:calc(2rem * var(--fs));line-height:1.2;text-align:center}
+#ov #box:has(#pd)>.list{display:grid;gap:10px;margin:0}
+#ov #box:has(#pd) .prow{display:grid;grid-template-columns:64px minmax(0,1fr) auto;align-items:center;gap:8px;border:2px solid var(--menu-edge);border-radius:12px;padding:6px;min-width:0;background:transparent}
+#ov #box:has(#pd) .prow .btn{border:0!important;background:transparent!important;outline:0;box-shadow:none!important;margin:0!important;padding:8px;max-width:100%}
+#ov #box:has(#pd) .prow [data-p]{text-align:center;font-size:calc(1.2rem * var(--fs));min-width:0;overflow-wrap:anywhere}
+#ov #box:has(#pd) .prow [data-p]::before{content:none!important}
+#ov #box:has(#pd) .prow:has([aria-pressed="true"]){background:var(--menu-selected,var(--menu-gold));color:#14312d}
+#ov #box:has(#pd) .prow:has([aria-pressed="true"]) .btn{color:#14312d!important}
+#ov #box:has(#pd) .prow [data-p][aria-pressed="true"]::after{content:' ✓'}
+#ov #box:has(#pd) .prow .avb{width:64px;height:64px;padding:0!important;overflow:hidden;border-radius:50%!important}
+#ov #box:has(#pd) .prow .avb :is(img,svg){width:100%;height:100%;object-fit:cover;border-radius:50%}
+#ov #box:has(#pd) .player-remove{min-width:44px;max-width:100px;font-size:24px}
+#ov #box:has(#pd) .player-remove[data-sure]{font-size:.8em}
+#ov #box:has(#pd) [data-menu-group="players"]{margin:0;padding:0;border:2px solid var(--menu-edge);border-radius:10px}
+#ov #box:has(#pd) [data-menu-group="players"]>summary{text-align:center;padding:10px;list-style:none}
+#ov #box:has(#pd) [data-menu-group="players"]>summary::marker{content:''}
+#ov #box:has(#pd) [data-menu-group="players"][open]{padding:12px}
+#ov #box:has(#pd) #accountOpen,#ov #box:has(#pd) #pd{width:100%;max-width:none;align-self:stretch}
+#ov #box:has(#pd)>.row{margin:0;width:100%}
+#ov #box:has(.personal-result)>h2{font-size:calc(1.9rem * var(--fs));line-height:1.2;margin:0}
+#ov #box .pair-result-stars{font-size:calc(2.4rem * var(--fs));position:relative;padding-inline:44px;gap:6px;min-height:48px}
+#ov #box .pair-result-stars>.mg-info-button{position:absolute;right:0;top:0;color:inherit;background:transparent}
+#ov #box .pair-result-stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:12px 0}
+#ov #box .pair-result-stats>div{border-radius:12px;padding:12px 8px;background:#77b9a533}
+#ov #box .pair-result-stats dt{font-size:calc(1rem * var(--fs));font-weight:600}
+#ov #box .pair-result-stats dd{font-size:calc(1.8rem * var(--fs));margin:4px 0 0;line-height:1.2}
+#ov #box .result-growth{margin:8px 0 18px}
+/* Library cards are the only visible surface; illustration, text and help never overlap. */
+html:not([data-hc="1"]) #home #libraryDisplay{background:var(--menu-surface)!important;color:var(--menu-ink);border:2px solid var(--menu-edge);border-radius:24px;padding:clamp(16px,3vw,30px);margin:24px auto;max-width:1120px}
+#home #libraryDisplay::before,#home #libraryDisplay::after{display:none}
+#home #libraryDisplay .library-heading{display:block;text-align:center;padding:0;background:none;border:0;box-shadow:none}
+#home #libraryDisplay .library-heading h1{text-align:center;font-size:calc(2.2rem * var(--fs));color:inherit}
+#home #libraryDisplay .library-tabs{justify-content:center;margin:0 0 20px;gap:10px}
+html:not([data-hc="1"]) #home #libraryDisplay .library-tabs .btn{background:transparent;color:var(--menu-ink);border:2px solid var(--menu-edge);border-radius:12px;box-shadow:none}
+html:not([data-hc="1"]) #home #libraryDisplay .library-tabs .main{background:var(--menu-gold)!important;color:#14312d!important;border-color:#ffdb58}
+#home #libraryDisplay .personal-game-card{position:relative;display:flex;background:none!important;border:0!important;padding:0!important;max-width:none;box-shadow:none!important}
+html:not([data-hc="1"]) #home #libraryDisplay .personal-game-card .game-tile{background:var(--menu-card)!important;color:var(--menu-ink)!important;border:1.5px solid var(--menu-edge)!important;box-shadow:0 4px 8px #001b1715!important}
+#home #libraryDisplay .personal-game-card .game-tile{grid-template-columns:84px minmax(0,1fr)!important;min-height:180px;padding:32px 50px 32px 14px!important;gap:12px;border-radius:18px!important}
+#home #libraryDisplay .game-tile .game-art{width:84px;height:84px;padding:0;background:none!important;border:0!important;box-shadow:none!important}
+#home #libraryDisplay .game-tile .game-art .game-picture{font-size:76px;width:100%;height:100%}
+#home #libraryDisplay .game-tile .game-art img{width:100%;height:100%;object-fit:contain}
+#home #libraryDisplay .game-tile strong{font-size:calc(1.1rem * var(--fs));line-height:1.2;color:inherit}
+#home #libraryDisplay .game-tile .game-desc{display:block!important;overflow:visible;-webkit-line-clamp:unset;font-size:calc(.95rem * var(--fs));line-height:1.3;color:inherit}
+#home #libraryDisplay .mg-info-button{background:transparent!important;color:inherit!important;border:0!important;right:4px;top:4px}
+#home #libraryDisplay .game-play{background:none!important;color:inherit!important;border:0!important;bottom:10px;right:12px}
+#home #libraryDisplay .search-field,#home #libraryDisplay .library-category select{background:transparent!important;color:inherit;border:1.5px solid var(--menu-edge);border-radius:12px;box-shadow:none}
+#home #libraryDisplay .search-field input{background:transparent!important;color:inherit;min-height:48px}
+#home #libraryDisplay .search-field input::placeholder{color:inherit;opacity:.85}
+#home #libraryDisplay .library-category select option{background:var(--panel);color:var(--ink)}
+#home #libraryDisplay .library-foot{color:inherit;text-align:center;font-size:.9em;margin:24px 0 0}
+@media(max-width:600px){
+ #home #libraryDisplay .personal-game-card .game-tile{grid-template-columns:64px minmax(0,1fr)!important;min-height:140px;padding:28px 46px 28px 12px!important;gap:10px}
+ #home #libraryDisplay .game-tile .game-art{width:64px;height:64px}
+ #home #libraryDisplay .game-tile .game-art .game-picture{font-size:60px}
+ #home #libraryDisplay .library-tabs>.btn{flex:1;padding:10px 8px}
+ #ov #box:has(#pd) .prow{grid-template-columns:48px minmax(0,1fr) auto}
+ #ov #box:has(#pd) .prow .avb{width:48px;height:48px}
+}
+@media(forced-colors:active){.prow,.game-tile,.account-secret{border-color:CanvasText!important}}
+#ov #box .account-panel h2{font-size:calc(2rem * var(--fs))!important;text-align:center!important}
+#ov #box:has(#pd)>h2{font-size:calc(2rem * var(--fs))!important;text-align:center!important}
+#ov #box:has(.personal-result)>h2{font-size:calc(1.9rem * var(--fs))!important}
+#ov #box:has(.account-panel,#pd,.personal-result) .btn{font-size:calc(1.1rem * var(--fs))!important}
+#ov #box .account-secret .btn{font-size:calc(.9rem * var(--fs))!important}
+#ov #box:has(#pd) .player-remove[data-sure]{font-size:calc(.8rem * var(--fs))!important}
+#home #libraryDisplay .personal-game-card .game-tile{padding-right:64px!important}
+#home #libraryDisplay .game-tile :is(strong,.game-desc){text-align:center!important}
+#ov #box:has(#pd) .prow .btn:focus-visible{outline:3px solid #ffbd32!important;outline-offset:3px}
+@media(max-width:600px){#home #libraryDisplay .personal-game-card .game-tile{padding-right:60px!important}}
+#ov #box .pair-result-stats :is(dt,dd){overflow-wrap:anywhere}
+#ov #box .pair-result-stars{padding-inline:0;overflow-wrap:anywhere}
+#ov #box .pair-result-stars>.mg-info-button{position:static}
+#home #libraryDisplay .game-card-grid{align-items:stretch!important}
+#home #libraryDisplay .personal-game-card{height:100%}
+#home #libraryDisplay .personal-game-card .game-tile{height:100%}
+#home #libraryDisplay .game-filterbar{justify-content:stretch!important;width:100%;max-width:none!important}
+#home #libraryDisplay .search-field{max-width:none!important;flex:1 1 240px}
+#ov #box:has(.personal-result)>.pair-rating-explanation{width:100%;max-width:none;margin:0!important}
+#ov #box:has(.personal-result)>.brk{border:0!important;background:none!important;padding:0!important;margin:0!important;font-weight:400}
+#ov #box:has(.personal-result)>.row:has(>button[hidden]):not(:has(>button:not([hidden]))){display:none!important}
+#ov #box:has(#pd)>.list{gap:10px!important}
+#ov #box:has(#pd) .prow{margin:0!important}
+#ov #box:has(#pd) .prow [data-p]{text-align:center!important}
+
+/* Clear player actions and optional account storage, matching the approved sage preview. */
+html[data-v4-mode="light"]{--menu-surface:#fafcf7;--menu-card:#e6efe4;--menu-gold:#24685b;--menu-edge:#628879}
+html[data-v4-mode="light"] #ov #box:has(.account-panel,#pd,.rename-panel) .btn.main{color:#fff!important;border-color:#24685b!important}
+#ov #box:has(.rename-panel){width:min(560px,calc(100vw - 24px));padding:clamp(18px,3vw,32px)}
+.record-assurance,.player-storage{padding:12px;border-radius:12px;background:color-mix(in srgb,#83af55 20%,transparent);font-weight:650}
+.account-choice{border:1px solid var(--menu-edge);border-radius:14px;padding:16px;margin:14px 0}
+.account-choice .btn,.account-actions>.btn,#accountCopyPlayers{width:100%;margin:8px 0}
+.account-player-selection label,.recovery-choice{display:flex;align-items:center;gap:12px;border-radius:10px;padding:12px;background:color-mix(in srgb,#83af55 12%,transparent)}
+#ov #box .account-panel input[type=checkbox]{width:24px;height:24px;flex:0 0 24px;padding:0;accent-color:#42763b}
+#ov #box:has(#pd) .prow{grid-template-columns:56px minmax(0,1fr);padding:12px}
+#ov #box:has(#pd) .prow .avb{grid-row:1 / 3;width:52px;height:52px}
+.player-record-count{grid-column:2;grid-row:2;overflow-wrap:anywhere;text-align:center}
+#ov #box:has(#pd) .prow .player-edit-name{grid-column:2;text-decoration:underline;text-align:center}
+#ov #box:has(#pd) .prow details{grid-column:1 / -1;text-align:center;font-size:.9em}
+#ov #box:has(#pd) .prow:has([aria-pressed="true"]){background:color-mix(in srgb,#83af55 24%,transparent);color:var(--menu-ink)}
+#ov #box:has(#pd) .prow:has([aria-pressed="true"]) .btn{color:var(--menu-ink)!important}
+#ov #box .account-panel input,#ov #box .rename-panel input{min-width:0;max-width:100%;box-sizing:border-box}
+/* Card-relative type: cqi tracks actual card width, not the whole viewport. */
+.card:has(.pair-word){container-type:inline-size}
+.card .pair-word{display:block;width:100%;box-sizing:border-box;font-size:clamp(1rem,calc(18cqi * var(--fs,1)),3.5rem);line-height:1.15;overflow-wrap:anywhere;word-break:normal;padding:clamp(1px,1cqi,6px);font-weight:700;text-align:center}
+
+html:not([data-hc="1"]) #ov #box:has(.rename-panel){background:var(--menu-surface)!important;color:var(--menu-ink)!important;border:2px solid var(--menu-edge)!important;border-radius:24px}
+#ov #box .rename-panel :is(h2,p,label,input){text-align:center;text-align-last:center}
+#ov #box .rename-panel .btn.main{background:var(--menu-gold)!important}
+
+#ov #box .account-panel p{margin:8px 0;line-height:1.4;font-size:calc(1rem * var(--fs))}
+#ov #box .account-panel label{margin:12px 0 6px}
+#ov #box .account-panel .recovery-choice{display:flex;gap:12px}
+#ov #box .account-panel .account-hint{font-size:calc(.9rem * var(--fs))}
+
+/* Centre headings and controls; keep prose independently aligned below. */
+#ov #box :is(h1,h2,h3,h4,label,summary,input,textarea,select,button),
+#libraryDisplay :is(h1,h2,h3,h4,label,summary,input,select,button),
+:is(.welcome-choice,.personal-picked-card,.personal-game-card,.game-tile,.card) :is(span,strong,small,label,button){text-align:center!important;text-align-last:center!important}
+#ov #box .menu-brand,#libraryDisplay .library-top,#libraryDisplay .library-category,#libraryDisplay .game-filterbar,#ov #box .library-tabs{justify-content:center;text-align:center!important}
+#ov #box .account-panel label,#ov #box .account-panel .account-secret,#ov #box .account-player-selection label{justify-content:center}
+#ov #box .account-panel :is(input,textarea){text-align:center!important;text-align-last:center!important}
+#ov #box:has(#pd) .prow{position:relative;display:flex!important;flex-direction:column;gap:8px;padding:14px;align-items:center}
+#ov #box:has(#pd) .prow .avb{position:absolute;left:12px;top:12px;width:44px;height:44px;z-index:1}
+#ov #box:has(#pd) .prow [data-p]{width:100%;padding:8px 52px!important;min-height:44px;text-align:center!important}
+#ov #box:has(#pd) .prow .player-record-count{box-sizing:border-box;width:100%;padding:0 40px;text-align:center!important}
+#ov #box:has(#pd) .prow .player-edit-name,#ov #box:has(#pd) .prow details{width:100%;text-align:center!important}
+#navMenu :is(button,summary,h3){text-align:center!important;justify-content:center}
+#navMenu .nav-group>button{width:100%;justify-content:center;text-align:center!important}
+#unifiedNav .nav-account{display:inline-flex;align-items:center;justify-content:center;max-width:100px;min-width:0;white-space:normal;overflow-wrap:anywhere;font-size:calc(.95rem * var(--fs));line-height:1.15;min-height:44px;padding:8px 12px}
+#ov #box .personal-picked-card .personal-picked{padding:54px 16px 16px!important;width:100%;box-sizing:border-box}
+#ov #box .personal-picked-card .personal-remove-game{position:absolute;top:6px;left:6px;z-index:2;width:44px;height:44px;min-height:44px;padding:0;border-radius:50%;font-size:1.5rem;display:grid;place-items:center}
+#ov #box .credential-save-step textarea{width:100%;box-sizing:border-box;overflow-wrap:anywhere;word-break:break-all;resize:vertical}
+#ov #box .credential-save-step > .btn{width:100%;margin:8px 0}
+#home :is([class*="card"],.lv,.welcome-choice),#mini :is([class*="card"],.big),#game .card{ text-align:center!important;text-align-last:center!important }
+#libraryDisplay .library-top{align-items:center}
+#libraryDisplay .library-tabs{justify-content:center}
+
+#home #unifiedNav .nav-account{max-width:100px!important;white-space:normal!important;box-sizing:border-box}
+@media(max-width:650px){#home #unifiedNav{--nav-control-size:48px;--nav-icon-size:28px}#home #unifiedNav .nav-account{padding:8px 6px!important;max-width:90px!important}}
+
+#ov #box>.menu-exit-bar{position:sticky;top:0;z-index:15;display:flex;justify-content:center;flex-shrink:0;margin:0;padding:4px;background:var(--panel);border-radius:12px}
+#ov #box>.menu-exit-bar .btn{min-height:44px;min-width:110px;margin:0;padding:8px 16px;text-align:center!important}
+
+/* One content task per account step; compact player rows with balanced actions. */
+#ov #box:has(#sd,.sound-panel,#lbs){gap:12px}
+#ov #box .credential-save-step #accountContinue{margin-top:20px}
+#ov #box:has(#pd) .prow{display:grid!important;grid-template-columns:44px minmax(0,1fr) 44px;gap:4px 8px;padding:10px}
+#ov #box:has(#pd) .prow .avb{position:static;grid-column:1;grid-row:1 / 3}
+#ov #box:has(#pd) .prow [data-p]{grid-column:2;grid-row:1;padding:4px!important}
+#ov #box:has(#pd) .prow .player-record-count{grid-column:2;grid-row:2;padding:0}
+#ov #box:has(#pd) .prow .player-edit-name{grid-column:2;grid-row:3;padding:4px!important}
+#ov #box:has(#pd) .prow details{grid-column:1 / -1;grid-row:4;margin:4px 0 0;padding:0 8px}
+#ov #box:has(#pd) .prow details>summary{min-height:44px;padding:8px;box-sizing:border-box}
+/* The full card, including its text group, has a shared centre axis. */
+#home #libraryDisplay .personal-game-card .game-tile{grid-template-columns:minmax(0,1fr)!important;justify-items:center;padding:48px 20px 34px!important;gap:10px}
+#home #libraryDisplay .game-tile .game-art{margin:auto}
+/* Ranking rows and weekly labels remain inside narrow cards at enlarged text. */
+#ov #box .lbr{grid-template-columns:2em minmax(0,1fr);min-width:0;width:100%;box-sizing:border-box}
+#ov #box .lbr b{min-width:0;justify-content:center;overflow-wrap:anywhere;flex-wrap:wrap}
+#ov #box .lbr>span:last-child{grid-column:1 / -1;text-align:center;overflow-wrap:anywhere}
+#ov #box .personal-week{grid-template-columns:repeat(7,minmax(0,1fr));min-width:0;gap:4px}
+#ov #box .personal-day{min-width:0;overflow-wrap:anywhere}
+#ov #box .personal-day>span{min-width:0;max-width:100%;white-space:normal;overflow-wrap:anywhere}
+#ov #box[data-settings-area="garden"]:has(#sd){width:min(800px,calc(100vw - 24px))}
+
+/* Welcome context and optional account access use the same centred axis. */
+#home .welcome-scene>#sceneFooter{position:relative;z-index:2;flex:0 0 auto;display:block;clear:both;width:fit-content;max-width:calc(100% - 24px);box-sizing:border-box;text-align:center;text-align-last:center;margin:auto auto 12px;padding:4px 12px;font-size:calc(1.25rem * var(--fs));font-weight:700;line-height:1.4;overflow-wrap:anywhere;color:#f5fff9;background:transparent;border:0;border-radius:0;box-shadow:none;text-shadow:0 1px 3px #102c36,0 0 6px #102c36}
+html[data-v4-mode="light"] #home .welcome-scene>#sceneFooter{color:#000;font-weight:800;background:transparent;text-shadow:0 1px 3px #fff,0 0 6px #fff}
+#ov #box .rename-account-option{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;align-items:center;gap:8px;width:100%;border-top:1px solid var(--menu-edge);padding-top:14px;margin-top:16px}
+#ov #box .rename-account-option>#gardenOnlineAccount{grid-column:2;width:100%;margin:0;white-space:normal}
+#ov #box .rename-account-option>.mg-info-button{grid-column:3;position:static;min-width:44px;min-height:44px;margin:0}
+#mgInfoTooltip{max-height:calc(100dvh - 32px);overflow:auto;text-align:center;overflow-wrap:anywhere}
+
+/* Shared button outline; independent sign-in and information hit targets. */
+#ov #box .device-signin-choice{display:grid;grid-template-columns:48px minmax(0,1fr) 48px;align-items:center;border:2px solid var(--menu-edge);border-radius:10px;margin:12px 0;padding:0;position:relative}
+#ov #box .device-signin-choice>.btn{grid-column:1 / -1;grid-row:1;width:100%;margin:0;padding:12px 48px;border:0;background:transparent;box-shadow:none;white-space:normal;min-width:0}
+#ov #box .device-signin-choice>.mg-info-button{grid-column:3;grid-row:1;position:relative;z-index:1;width:44px;height:44px;min-width:44px;margin:0;justify-self:center}
+#ov #box #deviceSetup,#ov #box #deviceRegister{display:block;width:100%;margin:12px 0}
+#ov #box .account-title{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px}
+#ov #box .account-title>.mg-info-button{position:static;flex:0 0 44px;margin:0}
+#ov #box .account-secret{display:grid;grid-template-columns:minmax(0,1fr) auto}
+#ov #box .account-secret input{width:100%;box-sizing:border-box;min-width:0}
+#ov #box .account-secret .secret-toggle{width:auto;min-width:60px;margin:0;white-space:nowrap;padding:6px 10px}
+#ov #box .account-secret .secret-toggle::before{content:none!important}
+
+#displaySavedNotice{text-align:center;margin:8px auto;max-width:90%}#dashboardCustom label{min-width:0}#dashboardCustom select{max-width:100%;width:100%;box-sizing:border-box}
+
+/* Shared selection lists and action rows stay compact at larger text sizes. */
+#dashboardCustom .display-game-list{display:grid;gap:4px;max-height:35dvh;overflow:auto;overscroll-behavior:contain;scrollbar-gutter:stable;padding:4px}
+#dashboardCustom .display-option{justify-content:center;text-align:center}
+#ov #box .personal-simple #personalSummary{display:block;width:100%;max-width:none;margin:12px auto 8px;text-align:center;white-space:normal;text-wrap:wrap}
+#ov #box .personal-simple #personalSummary:empty{display:none}
+#ov #box .personal-footer-actions{display:flex;justify-content:center;align-items:center;gap:8px}
+#ov #box .personal-footer-actions>.btn{margin:0;min-width:0;max-width:calc(50% - 4px);white-space:normal}
+#ov #box .leaderboard-list{display:grid;gap:10px}
+#ov #box .leaderboard-list.leaderboard-many{grid-template-columns:repeat(auto-fit,minmax(min(100%,max(calc(50% - 5px),calc(15rem * var(--fs)))),1fr))}
+#ov #box .leaderboard-list .lbr{grid-template-columns:2em minmax(0,1fr) 2em;margin:0}
+#ov #box .leaderboard-list .lbr>b{grid-column:2}
+#ov #box .play-toggle-row{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:8px 0}
+#ov #box .play-toggle-row>.btn{flex:1 1 calc(11rem * var(--fs));min-width:0;margin:0;padding:10px 8px;white-space:normal}
+#ov #box .break-interval{display:grid;gap:8px;margin:16px 0}
+#ov #box .break-interval .prow{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;border:0;padding:0}
+#ov #box .break-interval .btn{flex:1 1 calc(4rem * var(--fs));min-width:0;margin:0;padding:8px}
+#ov #box #v4GameSetting{border:0;border-top:1px solid var(--line);border-radius:0;padding:12px 0 4px;margin:12px 0 0}
+#ov #box #v4GameSetting legend{display:flex;align-items:center;justify-content:center;gap:8px;max-width:100%;margin:auto;white-space:normal}
+#ov #box .game-background-choice{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+#ov #box .game-background-choice>.btn{flex:1 1 calc(7rem * var(--fs));min-width:0;margin:0;white-space:normal}
+#ov #box .family-scope{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}
+
+/* Keep account outcomes visible without mistaking a download request for a saved file. */
+#ov #box .account-panel #accountOutcome{font-size:1.12em;line-height:1.45;background:rgba(89,164,111,.17);margin:12px 0;padding:12px;text-align:center}
+#ov #box .account-action-feedback{margin:2px 0 10px;font-size:.95em;font-weight:700;line-height:1.4;text-align:center}
+#welcomeAccountState{margin:6px 0 0;text-align:center;font-size:calc(1rem * var(--fs));color:inherit;text-shadow:0 1px 4px rgba(0,0,0,.4)}
+#ov #box .account-panel[data-auth-view="signed-out"]>.btn{display:block;margin:10px auto;max-width:100%}
+
+/* Account identity stays compact across orientation and text-size changes. */
+#home #unifiedNav #navAccount{display:block;max-width:clamp(80px,18vw,180px)!important;overflow:hidden;text-overflow:ellipsis;white-space:nowrap!important;overflow-wrap:normal}
+#ov #box #accountForm #accountStatus:not(:empty){padding:12px;border:2px solid var(--menu-edge);border-radius:10px;overflow-wrap:anywhere}
+#ov #box .account-panel .account-success{padding:12px;border:2px solid var(--menu-edge);border-radius:10px;font-weight:700}
+#ov #box .account-panel [aria-busy="true"] button:disabled{cursor:progress}
+
+/* Compact account actions retain centred text and independent help targets. */
+#ov #box .account-everyday{display:flex;flex-direction:column;align-items:center;gap:10px;margin:16px auto}
+#ov #box .account-tool-row{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;margin:10px auto;max-width:100%}
+#ov #box .account-tool-row>.btn{max-width:calc(100% - 54px);overflow-wrap:anywhere;white-space:normal;text-align:center;margin:0}
+#ov #box #accountOptions,#ov #box #accountStatus{text-align:center;overflow-wrap:anywhere}
+#navMenu>#customiseDashboard,#navMenu>#menuAccountSettings{display:block;width:100%;text-align:center;white-space:normal;padding:12px}
+
+/* Equal-width account actions, with independent help targets inside each outline. */
+#ov #box .account-everyday{width:min(100%,24rem);gap:12px}
+#ov #box .account-everyday>.btn,#ov #box .account-everyday>.account-tool-row{width:100%;box-sizing:border-box;margin:0}
+#ov #box .account-tool-row{position:relative;display:block;width:min(100%,24rem);max-width:100%;margin:12px auto}
+#ov #box .account-tool-row>.btn{display:block;box-sizing:border-box;width:100%;max-width:100%;min-height:56px;padding:12px 56px;white-space:normal;overflow-wrap:anywhere;text-align:center;margin:0}
+#ov #box .account-everyday>.btn{min-height:56px;padding:12px 56px;white-space:normal;overflow-wrap:anywhere}
+#ov #box .account-panel .mg-info-button{box-sizing:border-box;display:inline-grid;place-items:center;width:44px;height:44px;min-width:44px;max-width:44px;min-height:44px;max-height:44px;padding:0;margin:0;border:1px solid currentColor;border-radius:50%;font:700 20px/1 Arial,sans-serif;background:transparent;color:inherit;flex:0 0 44px}
+#ov #box .account-panel .mg-info-button>span{font:inherit;line-height:1}
+#ov #box .account-tool-row>.mg-info-button{position:absolute;right:6px;top:50%;transform:translateY(-50%);z-index:1}
+#ov #box .account-title{position:relative;padding-inline:52px;min-height:44px;overflow-wrap:anywhere}
+#ov #box .account-title>.mg-info-button{position:absolute;right:0;top:50%;transform:translateY(-50%)}
+#ov #box .account-tool-row>.btn:focus-visible,#ov #box .account-panel .mg-info-button:focus-visible{outline:3px solid #bd8700;outline-offset:2px}
+#ov #box .menu-exit-bar{display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap}
+#ov #box .menu-exit-bar>.btn{min-width:108px;min-height:44px;margin:0;text-align:center}
+/* Approved shared popup shell: fixed navigation positions, centred content, quiet secondary actions. */
+html:not([data-hc="1"]) #ov #box.standard-popup{background:var(--menu-surface)!important;color:var(--menu-ink)!important;border:2px solid var(--menu-edge)!important;border-radius:22px;box-shadow:0 18px 52px #001d2340}
+#ov #box.standard-popup{box-sizing:border-box;width:min(620px,calc(100vw - 24px));max-height:calc(100dvh - 24px);overflow:auto;overscroll-behavior:contain;padding:clamp(16px,3vw,28px);scroll-padding-top:100px}
+#ov #box.standard-popup:has(#dashboardCustom,.personal-simple,.app-info){width:min(780px,calc(100vw - 24px))}
+#ov #box.standard-popup .menu-exit-bar{position:sticky;top:-1px;z-index:15;display:grid;grid-template-columns:44px minmax(0,1fr) 44px;align-items:center;gap:10px;padding:8px 0 14px;margin:0 0 18px;background:var(--menu-surface);border-bottom:1px solid color-mix(in srgb,var(--menu-edge) 35%,transparent);border-radius:0}
+#ov #box.standard-popup .menu-exit-bar>.btn{box-sizing:border-box;width:44px;height:44px;min-width:44px;max-width:44px;min-height:44px;padding:0;margin:0;border:0!important;border-radius:9px!important;background:transparent!important;color:inherit!important;font:400 32px/1 Arial,sans-serif;box-shadow:none!important}
+#ov #box.standard-popup #menuBack{grid-column:1;grid-row:1}
+#ov #box.standard-popup #menuExit{grid-column:3;grid-row:1}
+#ov #box.standard-popup #menuPopupTitle{grid-column:2;grid-row:1;min-width:0;text-align:center;font-size:clamp(1.2rem,calc(1.4rem * var(--fs)),2.8rem);font-weight:750;line-height:1.25;overflow-wrap:anywhere}
+#ov #box.standard-popup .popup-original-heading{display:none!important}
+#ov #box.standard-popup .popup-heading-help{text-align:center;margin:0 0 12px}
+#ov #box.standard-popup .popup-footer{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:22px 0 0;padding:12px 0 0;border-top:1px solid color-mix(in srgb,var(--menu-edge) 30%,transparent);width:100%;box-sizing:border-box}
+#ov #box.standard-popup .popup-footer>.btn{flex:1 1 150px;width:auto;min-width:0;max-width:100%;min-height:52px;margin:0!important;padding:12px 16px;white-space:normal;overflow-wrap:anywhere;text-align:center}
+html:not([data-hc="1"]) #ov #box.standard-popup .btn{background:transparent;color:var(--menu-ink);border-color:var(--menu-edge);box-shadow:none;border-radius:10px}
+html:not([data-hc="1"]) #ov #box.standard-popup .btn.main{background:var(--menu-gold)!important;color:#14312d!important;border-color:#ffdb58!important}
+#ov #box.standard-popup :is(button,input,select,textarea):focus-visible{outline:3px solid #c99924!important;outline-offset:3px}
+#ov #box.standard-popup .account-everyday{width:100%;max-width:100%;margin:22px 0 12px}
+#ov #box.standard-popup .account-everyday :is(.btn,.account-tool-row){width:100%;max-width:100%;box-sizing:border-box}
+#ov #box.standard-popup .account-settings-link{position:relative}
+#ov #box.standard-popup .account-settings-link::before{content:'⚙︎';position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:24px}
+#ov #box.standard-popup .account-settings-link::after{content:'›';position:absolute;right:18px;top:50%;transform:translateY(-50%);font-size:28px}
+#ov #box.standard-popup .account-signout{width:100%;margin:18px 0 0;padding-top:12px;border-top:1px solid color-mix(in srgb,var(--menu-edge) 35%,transparent)}
+#ov #box.standard-popup .account-signout>.btn{border:0!important;font-weight:500;background:transparent!important;min-height:44px;padding-block:8px;opacity:.9}
+#ov #box.standard-popup .account-footer{border:0;padding:0;margin-top:16px}
+#ov #box.standard-popup .account-settings-body{border:0;padding:0;margin:0}
+#ov #box.standard-popup .account-settings-body .account-tool-row{width:100%}
+#ov #box.standard-popup .account-title{font-size:calc(1.8rem * var(--fs));margin:12px 0;text-align:center}
+#ov #box.standard-popup #accountCurrentPlayer{margin:12px 0;color:inherit;opacity:.9}
+#ov #box.standard-popup [hidden]{display:none!important}
+#ov #box.standard-popup:has(#pd) .prow:has([data-p][aria-pressed="true"]){background:color-mix(in srgb,var(--menu-edge) 16%,transparent)!important;color:var(--menu-ink)!important;border-color:#8dba78}
+#ov #box.standard-popup:has(#pd) .prow [data-p][aria-pressed="true"]::after{content:' ✓';color:inherit}
+@media(max-width:480px){#ov #box.standard-popup{padding:14px;width:calc(100vw - 16px);max-height:calc(100dvh - 16px)}#ov #box.standard-popup .menu-exit-bar{gap:6px}#ov #box.standard-popup .account-tool-row>.btn{padding-inline:50px}}
+
+/* Player visibility preferences outrank decorative layout rules. */
+#home #gardenProgressStrip.display-choice-hidden{display:none!important}
+/* Body copy follows the user's reference; reset inherited last-line centring too. */
+#libraryDisplay :is(p,li){text-align:left!important;text-align-last:left!important}
+#ov #box :is(p,li){text-align:center!important;text-align-last:auto!important}
+#ov #box :is(p,li) :is(span,strong,em,small,a),#libraryDisplay :is(p,li) :is(span,strong,em,small,a){text-align:inherit!important;text-align-last:inherit!important}
+#ov #box .app-info :is(h1,h2,h3,h4,summary){text-align:center!important;text-align-last:center!important}
+#home #unifiedNav .nav-actions [data-go="account"]{order:10}
+#home #unifiedNav .nav-actions [data-go="language"]{order:11}
+#home #unifiedNav .nav-actions [data-go="appearance"]{order:12}
+#home #unifiedNav .nav-actions #navCards{order:13}
+#home #unifiedNav .nav-actions #navMore{order:14}
+#home #unifiedNav #navCards,#home #unifiedNav #navAppearance{flex-shrink:0}
+
+@media(max-width:450px){
+ #home #unifiedNav .nav-brand{display:inline-flex!important;flex-shrink:0!important}
+ #home #unifiedNav[data-nav-compact=true] .nav-brand{box-sizing:border-box;width:var(--nav-touch-width,40px)!important;min-width:var(--nav-touch-width,40px)!important;padding:4px!important}
+ #home #unifiedNav{column-gap:4px!important}
+ #home #unifiedNav .nav-actions{gap:4px!important}
+ #home #unifiedNav .nav-actions #navAccount,#home #unifiedNav .nav-actions [data-go="language"],#home #unifiedNav .nav-actions #navAppearance,#home #unifiedNav .nav-actions #navCards,#home #unifiedNav .nav-actions #navMore{width:var(--nav-touch-width,40px)!important;min-width:var(--nav-touch-width,40px)!important;max-width:var(--nav-touch-width,40px)!important;padding:4px!important;flex:0 0 var(--nav-touch-width,40px)!important}
+ #home #unifiedNav #navAccount{font-size:0!important}
+ #home #unifiedNav #navAccount::before{content:"👤";font-size:22px}
+}
+
+#ov #box .lbr .ranking-copy-note{grid-column:1/-1;display:flex;justify-content:center}
+/* Flying-only scenery fallback; motion and visibility switches still apply. */
+#gardenLife .scenery-flyers{display:none;position:absolute;inset:0;overflow:hidden;pointer-events:none}
+#gardenLife.wildlife-fallback .scenery-flyers{display:block}
+.scenery-flyers>span{position:absolute;left:15%;top:22%;font-size:26px;animation:scenery-flight 24s ease-in-out infinite alternate}
+.scenery-flyers>span:nth-child(2){left:55%;top:66%;font-size:22px;animation-duration:18s;animation-delay:-8s}
+.scenery-flyers>span:nth-child(3){left:68%;top:32%;font-size:20px;animation-delay:-14s;animation-duration:29s}
+@keyframes scenery-flight{from{transform:translate(-35px,10px) rotate(-8deg)}to{transform:translate(65px,-28px) rotate(8deg)}}
+html[data-ambient-paused="true"] .scenery-flyers>span,html[data-motion="off"] .scenery-flyers>span{animation-play-state:paused}
+@media(prefers-reduced-motion:reduce){html:not([data-motion-explicit="true"]) .scenery-flyers>span{animation:none}}
+
+/* Approved result layout: two primary actions and one quiet utility footer. */
+#ov #box:has(#personalResult){width:min(560px,calc(100vw - 24px))}
+#ov #box #personalResult{width:100%;min-width:0}
+#ov #box #personalResult .result-primary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;width:100%;margin:18px 0 0}
+#ov #box #personalResult .result-primary:not(:has(#personalNext)){grid-template-columns:minmax(0,1fr)}
+#ov #box #personalResult .result-primary>.btn{display:flex;align-items:center;justify-content:center;gap:8px;min-width:0;min-height:56px;padding:12px 8px;font-size:calc(1.1rem * var(--fs));line-height:1.3}
+#ov #box .result-footer{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;border-top:1px solid var(--menu-edge);margin:22px 0 0;padding:10px 0 0;width:100%}
+#ov #box .result-footer>.btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-width:0;min-height:48px;padding:6px 2px;border:0!important;background:transparent!important;line-height:1.3}
+#ov #box .result-footer>.btn span{font-size:calc(.8rem * var(--fs));overflow-wrap:anywhere}
+#ov #box :is(#personalResult,#personalResultOptions,#personalRestScreen) .garden-icon{width:24px;height:24px;flex:0 0 24px}
+#ov #box #personalResultOptions{display:flex;flex-direction:column;gap:10px;width:100%;margin-top:12px}
+#ov #box #personalResultOptions>.btn,#ov #box #personalRestResume{display:flex;align-items:center;justify-content:center;gap:8px;white-space:normal}
+#ov #box:has(#personalResult) p.garden-growth-message{text-align:center!important;text-align-last:center!important;width:100%;margin:22px auto}
+#ov #box:has(#personalResult) .pair-result-stats :is(dt,dd){text-align:center!important;text-align-last:center!important}
+#ov #box:has(#personalResult) #menuPopupTitle{font-size:calc(1.65rem * var(--fs));line-height:1.2}
+@media(max-width:360px){#ov #box .result-footer{gap:4px}#ov #box #personalResult .result-primary>.btn{gap:5px;padding-inline:5px}}
+#ov #box #dailyResult .result-footer{grid-template-columns:repeat(2,minmax(0,1fr))}
+#ov #box .daily-result-primary{display:flex;justify-content:center}
+#ov #box .daily-result-primary>.btn{display:flex;align-items:center;justify-content:center;gap:8px}
+#ov #box #dailyResult .garden-icon,#ov #box .daily-result-primary .garden-icon{width:24px;height:24px;flex-shrink:0}
+
+/* Light actions and selected tabs use distinct, readable surfaces. */
+html[data-v4-mode="light"]:not([data-hc="1"]) :is(#ov #box,#home,#game,#mini) .btn.main{background:#24685b!important;background-image:none!important;color:#fff!important;border-color:#24685b!important;box-shadow:0 2px 5px #174a421a!important}
+html[data-v4-mode="light"]:not([data-hc="1"]) :is(#home #libraryDisplay,#ov #box) .library-tabs .btn.main{background:#c5e2da!important;background-image:none!important;color:#174a42!important;border-color:#628879!important;box-shadow:inset 0 -3px 0 #24685b!important}
+/* One circled information glyph; retain an invisible 44px touch target. */
+html body .mg-info-button{appearance:none!important;-webkit-appearance:none!important;border-radius:0!important;border:0!important;background:transparent!important;background-image:none!important;box-shadow:none!important;text-shadow:none!important;display:inline-grid;place-items:center;padding:0;min-width:44px;min-height:44px}
+html body .mg-info-button:hover{background:transparent!important;box-shadow:none!important}
+#ov #box .personal-setup .personal-title{flex-direction:column;align-items:center;justify-content:center;gap:0}
+#ov #box .personal-setup .personal-title p{order:0;flex:none;width:100%;margin:0;text-align:center}
+#ov #box .personal-setup .personal-title>.mg-info-button{order:1;position:static;transform:none;margin:0 auto;flex:0 0 44px}
+#ov #box .personal-picked-card>.mg-info-button{left:50%;right:auto;top:6px;transform:translateX(-50%);margin:0}
