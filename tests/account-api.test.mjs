@@ -1,0 +1,36 @@
+import {database} from './room8.test.mjs';
+import {onRequest} from '../functions/api/account.js';
+import {readFileSync} from 'node:fs';
+import assert from 'node:assert/strict';
+const {DB,sqlite}=database();const migration=readFileSync(new URL('../migrate-v4.0.33.sql',import.meta.url),'utf8');sqlite.exec(migration);sqlite.exec(migration);
+const env={DB,MG_ACCOUNT_PEPPER:'test-only-secret-never-use-in-production-123456',MG_ACCOUNT_SIGNUP:'enabled'};
+function client(ip){let cookie='';return async(action,data={},status=200,origin='https://garden.test')=>{const r=await onRequest({env,request:new Request('https://garden.test/api/account?action='+action,{method:'POST',headers:{Origin:origin,'Content-Type':'application/json',Cookie:cookie,'CF-Connecting-IP':ip},body:JSON.stringify(data)})});const b=await r.json();assert.equal(r.status,status,action+': '+JSON.stringify(b));if(r.headers.has('set-cookie')){assert(r.headers.get('set-cookie').includes('HttpOnly; Secure; SameSite=Strict'));cookie=r.headers.get('set-cookie').split(';')[0]}return b}}
+const a=client('1'),b=client('2'),device2=client('3');
+await a('state',{},401);await a('signup',{username:'alice',password:'a sufficiently long passphrase'},403,'https://evil.test');
+const auth=await a('signup',{username:'alice',password:'a sufficiently long passphrase'});assert.equal(auth.recovery.length,64);
+await b('signup',{username:'bob',password:'another long passphrase'});
+const doc={schemaVersion:1,profiles:{p1:{name:'Player A',log:[{d:'2026-11-13',g:'num',r:1,s:10}],stars:{num:3},preferences:{mode:'dark'},gameSettings:{my:{num:{count:5}},all:{num:{count:15}}}},p2:{name:'Player B',log:[],stars:{}}}};
+await a('save',{document:doc,revision:0});const state=await a('state');assert.deepEqual(state.document,doc);assert.equal(state.revision,1);assert.deepEqual((await b('state')).document.profiles,{});
+await a('save',{document:doc,revision:0},409);assert.equal((await a('state')).revision,1);
+await device2('signin',{username:'alice',password:'incorrect passphrase'},401);await device2('signin',{username:'alice',password:'a sufficiently long passphrase'});assert.deepEqual((await device2('state')).document,doc);
+const exported=await a('export');assert.equal(exported.format,'mind-garden-account-backup');assert(!JSON.stringify(exported).includes('password'));assert(!JSON.stringify(exported).includes(auth.recovery));
+const corrupt=structuredClone(doc);corrupt.profiles.p1.av='x" onerror="alert(1)';await a('save',{document:corrupt,revision:1},400);
+const poison=JSON.parse('{"schemaVersion":1,"profiles":{"__proto__":{"name":"X","log":[],"stars":{}}}}');await a('save',{document:poison,revision:1},400);
+// Cookie possession alone must not authorize deleted profiles or history.
+const erased=structuredClone(doc);erased.profiles.p1.log=[];
+await a('save',{document:erased,revision:1},401);
+await a('verify-owner',{password:'a sufficiently long passphrase'});
+await a('save',{document:erased,revision:1},401);
+await a('save',{document:erased,revision:1,password:'wrong'},401);
+const deleted=structuredClone(doc);delete deleted.profiles.p2;
+await a('save',{document:deleted,revision:1},401);
+assert.deepEqual((await a('state')).document,doc);
+await a('save',{document:erased,revision:1,password:'a sufficiently long passphrase'});
+await a('save',{document:doc,revision:2});
+await a('signout');await a('state',{},401);
+const recovery=await a('recover',{username:'alice',password:'replacement passphrase long',recovery:auth.recovery});assert.notEqual(recovery.recovery,auth.recovery);await device2('state',{},401);assert.deepEqual((await a('state')).document,doc);
+const row=sqlite.prepare('SELECT * FROM mg_accounts WHERE username=?').get('alice');assert.notEqual(row.password_hash,'replacement passphrase long');assert.notEqual(row.recovery_hash,recovery.recovery);
+const bad=client('4');for(let i=0;i<10;i++)await bad('signin',{username:'missing',password:'a sufficiently long passphrase'},401);await bad('signin',{username:'missing',password:'a sufficiently long passphrase'},429);
+const short=client('short');await short('signup',{username:'short-test',password:'123456789'},400);const ten=await short('signup',{username:'short-test',password:'garden1234'});await short('signin',{username:'short-test',password:'garden1234'});await short('recover',{username:'short-test',password:'newgarden1',recovery:ten.recovery});
+const optional=client('optional');const noKey=await optional('signup',{username:'optional-key',password:'optional test password',generateRecovery:false});assert.equal(noKey.recovery,undefined);await optional('recovery-key',{password:'wrong password'},401);const generated=await optional('recovery-key',{password:'optional test password'});assert.equal(generated.recovery.length,64);const replacement=await optional('recovery-key',{password:'optional test password'});assert.notEqual(generated.recovery,replacement.recovery);await optional('recover',{username:'optional-key',password:'changed optional password',recovery:generated.recovery},401);await optional('recover',{username:'optional-key',password:'changed optional password',recovery:replacement.recovery});
+console.log('PASS account isolation, authenticated export, cookie flags, CSRF, optimistic revisions, cross-device retrieval, signout, recovery revocation, malformed input, rate limiting and repeatable migration.');sqlite.close();
