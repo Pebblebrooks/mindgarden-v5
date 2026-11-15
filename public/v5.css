@@ -1,0 +1,101 @@
+/* V5.0.0: clearer first screen, labelled menu, language picker, compact game list. Loaded last. */
+
+/* ---------- Toolbar: brand, main links (wide screens) and a labelled Menu button ---------- */
+html #home #unifiedNav .nav-actions>#navAppearance,
+html #home #unifiedNav .nav-actions>#navCards,
+html #home #unifiedNav .nav-actions>#homeAnimationToggle,
+html #home #unifiedNav .nav-actions>#homeNatureToggle,
+html #home #unifiedNav .nav-actions>[data-go="music"]{display:none!important}
+@media (max-width:740px){
+ html #home #unifiedNav .nav-actions>#navAccount,
+ html #home #unifiedNav .nav-actions>[data-go="language"]{display:none!important}
+}
+html #home #unifiedNav .nav-actions #navMore{width:auto!important;max-width:none!important;flex:0 0 auto!important;min-width:48px!important;height:auto!important;min-height:48px!important;padding:0 14px!important;display:inline-flex!important;align-items:center;justify-content:center;gap:8px;font-weight:700;font-size:calc(1rem * min(var(--fs),1.4))!important;line-height:1.2}
+html #home #unifiedNav #navMore .nav-more-label{white-space:nowrap}
+#navMore[aria-expanded="true"] .nav-more-open,
+#navMore:not([aria-expanded="true"]) .nav-more-close{display:none}
+#navMenu .nav-group button>span[aria-hidden="true"] svg{width:1.4em;height:1.4em;vertical-align:middle}
+#navMenu #v5MenuAccount,#navMenu #v5MenuMotion{width:100%;min-height:44px}
+#navMenu #gardenViewControls>button{margin-top:10px!important;position:static!important}
+
+/* ---------- Home: one clear primary action ---------- */
+#home #welcomeDashboard #dashStart{background-color:#22574b!important;background-image:none!important;color:#fff!important;border:3px solid #f3d88b!important;box-shadow:0 4px 0 #163e37,0 10px 22px #173e3733!important}
+html #home #welcomeDashboard #dashStart :is(strong,span,small){color:#fff!important}
+#home #welcomeDashboard #dashStart strong{font-size:calc(1.15rem * var(--fs))}
+#home #welcomeDashboard #dashStart .feature-sub{display:block;font-size:calc(.9rem * var(--fs));font-weight:400;color:#e6efe4;line-height:1.3}
+#home #welcomeDashboard .welcome-choice:has(#dashStart) .mg-help-trigger{color:#fff}
+@media (max-width:740px){
+ #home #welcomeDashboard .welcome-heading p{display:none!important}
+ /* Large text: the heading stops growing so the games stay on the first screen. */
+ html #home #welcomeDashboard .welcome-heading h1{font-size:calc(2.25rem * min(var(--fs),1.2))!important;line-height:1.15!important;margin-block:4px!important}
+ html #home #welcomeDashboard .welcome-name{font-size:calc(1.25rem * min(var(--fs),1.5))!important}
+ #home #welcomeDashboard .welcome-choice:has(#dashStart){grid-column:1/-1!important;flex-basis:100%!important;max-width:100%!important}
+ /* Two columns while labels fit on one line; one column once text is enlarged, so words never break. */
+ html #home #welcomeDashboard .welcome-ctas{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(min(100%,calc(150px * var(--fs))),1fr))!important}
+ html #home #welcomeDashboard .welcome-feature{overflow-wrap:normal!important;word-break:keep-all}
+}
+/* Help text opens in a dialog (v5.js) wherever a popover could be clipped or cannot be hovered. */
+@media (hover:none),(max-width:740px){
+ #welcomeDashboard .mg-help>.mg-help-text{display:none!important}
+}
+
+/* ---------- Shared dialog pieces ---------- */
+#box .v5-dialog{text-align:center}
+#box .v5-dialog h2{margin-top:0}
+#box .v5-dialog>p{font-size:calc(1.05rem * var(--fs));line-height:1.55;max-width:34em;margin-inline:auto}
+#box .v5-language-options{display:grid;gap:12px;margin:16px 0}
+#box .v5-language-option{min-height:72px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;width:100%}
+#box .v5-language-option strong{font-size:calc(1.3rem * var(--fs))}
+#box .v5-language-option small{font-size:calc(.85rem * var(--fs));font-weight:400}
+#box .v5-language-option[aria-pressed="true"]{background:#22574b!important;background-image:none!important;color:#fff!important;border:3px solid #f3d88b!important}
+/* One information-button style everywhere: the circled i with no square backing. */
+#box .mg-info-button{width:44px;height:44px;min-width:44px;border-radius:50%!important;border:0!important;background:transparent!important;background-image:none!important;box-shadow:none!important;display:inline-grid;place-items:center;padding:0!important}
+
+/* ---------- All Games ---------- */
+.v5-category-chips{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 8px}
+.v5-category-chips .v5-chip{min-height:48px;padding:6px 16px!important;border-radius:999px!important;width:auto!important;flex:0 0 auto;font-size:calc(.95rem * var(--fs))}
+.v5-category-chips .v5-chip[aria-pressed="true"]{background:#173e37!important;background-image:none!important;color:#fff!important;border-color:#173e37!important}
+
+/* ---------- My Games ---------- */
+#box .personal-simple:not(.v5-removing) .personal-remove-game{display:none!important}
+#box #v5RemoveMode{display:block;margin:12px auto 0}
+#box #v5RemoveMode[aria-pressed="true"]{background:#f3ba42!important;background-image:none!important;color:#172b30!important}
+
+/* ---------- My Progress ---------- */
+#box .menu-view-tabs .btn{white-space:nowrap;overflow-wrap:normal;word-break:keep-all;min-width:0;flex:1 1 auto}
+#box .menu-view-tabs .btn::before{content:none!important}
+
+/* ---------- Phone toolbar stays to brand + Menu; text size lives in Menu > Settings ---------- */
+@media (max-width:740px){
+ html #home #unifiedNav .nav-actions>#navTextSize{display:none!important}
+}
+
+/* ---------- All Games: chips replace the category select; two compact columns on phones ---------- */
+html #libraryDisplay .library-category[hidden]{display:none!important}
+html[data-v4-mode] #home #gameLibrary #libraryDisplay .v5-category-chips .btn.v5-chip{min-height:44px;padding:4px 14px!important;background:#fffdf7!important;background-image:none!important;color:#173e37!important;border:2px solid #628879!important;box-shadow:none!important}
+html[data-v4-mode] #home #gameLibrary #libraryDisplay .v5-category-chips .btn.v5-chip[aria-pressed="true"]{background:#173e37!important;color:#fff!important;border-color:#173e37!important}
+html[data-v4-mode="dark"] #home #gameLibrary #libraryDisplay .v5-category-chips .btn.v5-chip{background:transparent!important;color:#eaf4f6!important;border-color:#9dbbc6!important}
+html[data-v4-mode="dark"] #home #gameLibrary #libraryDisplay .v5-category-chips .btn.v5-chip[aria-pressed="true"]{background:#f3d88b!important;color:#172b30!important;border-color:#f3d88b!important}
+@media (max-width:740px){
+ html:not([data-text-large="1"]) #home #gameLibrary #libraryDisplay #gameCards.game-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+ html:not([data-text-large="1"]) #home #gameLibrary #libraryDisplay .personal-game-card .game-tile{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:flex-end!important;text-align:center!important;min-height:150px!important;padding:48px 8px 14px!important;gap:8px!important}
+ html:not([data-text-large="1"]) #home #gameLibrary #libraryDisplay .personal-game-card .game-info{align-items:center;text-align:center}
+ html:not([data-text-large="1"]) #home #gameLibrary #libraryDisplay .personal-game-card :is(.game-desc,.game-play){display:none!important}
+ html:not([data-text-large="1"]) #home #gameLibrary #libraryDisplay .personal-game-card :is(.game-picture,.game-illustration){width:56px!important;height:56px!important}
+}
+
+/* ---------- My Games: full-width cards ---------- */
+#ov #box .personal-simple .personal-selected-grid{display:grid!important;grid-template-columns:minmax(0,1fr);gap:10px}
+#ov #box .personal-simple .personal-picked-card{width:100%}
+
+/* ---------- Readability: nothing a player needs to read is under 16px at 100% text size ---------- */
+html #home #welcomeDashboard #dashStart .feature-sub,
+html #navMenu .nav-group h3,
+html #navMenu #heroMediaCaption,
+html #navMenu #sceneryRotation p,
+html #ov #box .personal-stats span,
+html #ov #box .personal-week span,
+html #ov #box .personal-simple>p,
+html #ov #box .personal-picked :is(span,small),
+html #ov #box .personal-setup p.tip,
+html #home #gameLibrary #libraryDisplay .v5-category-chips .btn.v5-chip{font-size:calc(1rem * var(--fs))!important}
